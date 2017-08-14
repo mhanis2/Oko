@@ -1,198 +1,198 @@
 package factorycards;
 
-import factorycards.cards.Card;
+import model.card.Card;
 
 public interface CardsFactory {
 
 	/**
 	 * Create card Clubs Seven.
-	 * @return
+	 * @return card Clubs Seven
 	 */
 	public Card createCardClubsSeven();
 
 	/**
 	 * Create card Clubs Eight.
-	 * @return
+	 * @return card Clubs Eight
 	 */
 	public Card createCardClubsEight();
 
 	/**
 	 * Create card Clubs Nine.
-	 * @return
+	 * @return card Clubs Nine
 	 */
 	public Card createCardClubsNine();
 
 	/**
 	 * Create card Clubs Ten.
-	 * @return
+	 * @return card Clubs Ten
 	 */
 	public Card createCardClubsTen();
 
 	/**
 	 * Create card Clubs Jack.
-	 * @return
+	 * @return card Clubs Jack
 	 */
 	public Card createCardClubsJack();
 
 	/**
 	 * Create card Clubs Queen.
-	 * @return
+	 * @return card Clubs Queen
 	 */
 	public Card createCardClubsQueen();
 
 	/**
 	 * Create card Clubs King.
-	 * @return
+	 * @return card Clubs King
 	 */
 	public Card createCardClubsKing();
 
 	/**
 	 * Create card Clubs Ace.
-	 * @return
+	 * @return card Clubs Ace
 	 */
 	public Card createCardClubsAce();
 
 	/**
 	 * Create card Clubs Seven.
-	 * @return
+	 * @return card Clubs Seven
 	 */
 	public Card createCardDiamondsSeven();
 
 	/**
 	 * Create card Diamonds Eight.
-	 * @return
+	 * @return card Diamonds Eight
 	 */
 	public Card createCardDiamondsEight();
 
 	/**
 	 * Create card Diamonds Nine.
-	 * @return
+	 * @return card Diamonds Nine
 	 */
 	public Card createCardDiamondsNine();
 
 	/**
 	 * Create card Diamonds Ten.
-	 * @return
+	 * @return card Diamonds Ten
 	 */
 	public Card createCardDiamondsTen();
 
 	/**
 	 * Create card Diamonds Jack.
-	 * @return
+	 * @return card Diamonds Jack
 	 */
 	public Card createCardDiamondsJack();
 
 	/**
 	 * Create card Diamonds Queen.
-	 * @return
+	 * @return card Diamonds Queen
 	 */
 	public Card createCardDiamondsQueen();
 
 	/**
 	 * Create card Diamonds King.
-	 * @return
+	 * @return card Diamonds King
 	 */
 	public Card createCardDiamondsKing();
 
 	/**
 	 * Create card Diamonds Ace.
-	 * @return
+	 * @return card Diamonds Ace
 	 */
 	public Card createCardDiamondsAce();
 
 	/**
 	 * Create card Hearts Seven.
-	 * @return
+	 * @return card Hearts Seven
 	 */
 	public Card createCardHeartsSeven();
 
 	/**
 	 * Create card Hearts Eight.
-	 * @return
+	 * @return card Hearts Eight
 	 */
 	public Card createCardHeartsEight();
 
 	/**
 	 * Create card Hearts Nine.
-	 * @return
+	 * @return card Hearts Nine
 	 */
 	public Card createCardHeartsNine();
 
 	/**
 	 * Create card Hearts Ten.
-	 * @return
+	 * @return card Hearts Ten
 	 */
 	public Card createCardHeartsTen();
 
 	/**
 	 * Create card Hearts Jack.
-	 * @return
+	 * @return card Hearts Jack
 	 */
 	public Card createCardHeartsJack();
 
 	/**
 	 * Create card Hearts Queen.
-	 * @return
+	 * @return card Hearts Queen
 	 */
 	public Card createCardHeartsQueen();
 
 	/**
 	 * Create card Hearts King.
-	 * @return
+	 * @return card Hearts King
 	 */
 	public Card createCardHeartsKing();
 
 	/**
 	 * Create card Hearts Ace.
-	 * @return
+	 * @return card Hearts Ace
 	 */
 	public Card createCardHeartsAce();
 
 	/**
 	 * Create card Spades Seven.
-	 * @return
+	 * @return card Spades Seven
 	 */
 	public Card createCardSpadesSeven();
 
 	/**
 	 * Create card Spades Eight.
-	 * @return
+	 * @return card Spades Eight
 	 */
 	public Card createCardSpadesEight();
 
 	/**
 	 * Create card Spades Nine.
-	 * @return
+	 * @return card Spades Nine
 	 */
 	public Card createCardSpadesNine();
 
 	/**
 	 * Create card Spades Ten.
-	 * @return
+	 * @return card Spades Ten
 	 */
 	public Card createCardSpadesTen();
 
 	/**
 	 * Create card Spades Jack.
-	 * @return
+	 * @return card Spades Jack
 	 */
 	public Card createCardSpadesJack();
 
 	/**
 	 * Create card Spades Queen.
-	 * @return
+	 * @return card Spades Queen
 	 */
 	public Card createCardSpadesQueen();
 
 	/**
 	 * Create card Spades King.
-	 * @return
+	 * @return card Spades King
 	 */
 	public Card createCardSpadesKing();
 
 	/**
 	 * Create card Spades Ace.
-	 * @return
+	 * @return card Spades Ace
 	 */
 	public Card createCardSpadesAce();
 

@@ -2,7 +2,7 @@ package model;
 
 import java.util.List;
 
-import factorycards.cards.Card;
+import model.card.Card;
 
 public class Player {
 

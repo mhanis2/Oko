@@ -1,6 +1,5 @@
 package util;
 
-import factorycards.cards.Card;
 import model.Const;
 import model.Player;
 
@@ -16,7 +15,6 @@ public class CardUtil {
 
 		StringBuilder line = new StringBuilder();
 		int cardCount = player.getCards().size();
-		int hlCount = (cardCount - 1) * 3 + Const.CARD_SIZE_X - 2;
 
 		line.append(Const.TLC);
 		for (int i = 0; i < cardCount; i++) {
@@ -42,12 +40,11 @@ public class CardUtil {
 	public String drawTopLineComputer(Player player) {
 		StringBuilder line = new StringBuilder();
 		int cardCount = player.getCards().size();
-		int hlCount = (cardCount - 1)*3 + Const.CARD_SIZE_X - 2;
 		
 		line.append(Const.TLC);
-		for (int i = 0; i < cardCount; i++) {
+		for (int i = (cardCount-1); i >= 0; i--) {
 			
-			if( i == 0) {
+			if( i == (cardCount-1)) {
 				for (int j = 0; j < Const.CARD_SIZE_X - 2; j++) {
 					line.append(Const.HL);
 				}
@@ -69,12 +66,11 @@ public class CardUtil {
 	public String drawBottomLineComputer(Player player) {
 		StringBuilder line = new StringBuilder();
 		int cardCount = player.getCards().size();
-		int hlCount = (cardCount - 1)*3 + Const.CARD_SIZE_X - 2;
 		
 		line.append(Const.BLC);
-		for (int i = 0; i < cardCount; i++) {
+		for (int i = (cardCount-1); i >= 0; i--) {
 			
-			if( i == 0) {
+			if( i == (cardCount-1)) {
 				for (int j = 0; j < Const.CARD_SIZE_X - 2; j++) {
 					line.append(Const.HL);
 				}
@@ -96,7 +92,6 @@ public class CardUtil {
 	public String drawBottomLine(Player player) {
 		StringBuilder line = new StringBuilder();
 		int cardCount = player.getCards().size();
-		int hlCount = (cardCount - 1) * 3 + Const.CARD_SIZE_X - 2;
 
 		line.append(Const.BLC);
 		for (int i = 0; i < cardCount; i++) {
@@ -152,10 +147,10 @@ public class CardUtil {
 		int cardCount = player.getCards().size();
 		
 		line.append(Const.VL);
-		for (int i = 0; i < cardCount; i++) {
+		for (int i = (cardCount-1); i >= 0; i--) {
 			String cardLabel = player.getCards().get(i).getValue().getLabel();
 			int cardLabelLenght = cardLabel.length();
-			if(i == 0) {
+			if(i == (cardCount-1)) {
 				line.append(cardLabel);
 				for (int j = 0; j < Const.CARD_SIZE_X - 2 * (cardLabelLenght) -2; j++) {
 					line.append(Const.SP);
@@ -211,10 +206,10 @@ public class CardUtil {
 		int cardCount = player.getCards().size();
 		
 		line.append(Const.VL);
-		for (int i = 0; i < cardCount; i++) {
+		for (int i = (cardCount-1); i >= 0; i--) {
 			char cardColor = player.getCards().get(i).getColor().getColor();
 
-			if(i == 0) {
+			if(i == (cardCount-1)) {
 				line.append(Const.SP);
 				line.append(cardColor);
 				for (int j = 0; j < Const.CARD_SIZE_X - 6; j++) {
@@ -271,9 +266,9 @@ public class CardUtil {
 		int cardCount = player.getCards().size();
 		
 		line.append(Const.VL);
-		for(int i = 0; i < cardCount; i++) {
+		for(int i = (cardCount-1); i >= 0; i--) {
 			
-			if(i == 0) {
+			if(i == (cardCount-1)) {
 				for (int j = 0; j < Const.CARD_SIZE_X - 2; j++) {
 					line.append(Const.SP);
 				}

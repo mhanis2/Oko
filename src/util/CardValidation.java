@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import exceptions.DimensionsException;
-import factorycards.cards.Card;
+//import factorycards.cards.Card;
 import model.Const;
 import model.Player;
 
@@ -35,7 +35,7 @@ public class CardValidation {
 			System.out.println("Dimensions of card(s) of " + userName + " are ok.");
 			;
 		} else {
-			throw new DimensionsException("Dimensions of card(s) are invalid.");
+			throw new DimensionsException("Dimensions of card(s) " + userName + " are invalid.");
 		}
 	}
 

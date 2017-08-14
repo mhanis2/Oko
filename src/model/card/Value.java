@@ -11,7 +11,6 @@ public enum Value {
 
 	Value(String label) {
 		this.label = label;
-		// this.value = value;
 	}
 
 	public String getLabel() {

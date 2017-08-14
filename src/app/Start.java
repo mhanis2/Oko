@@ -5,9 +5,9 @@ import java.util.List;
 
 import exceptions.DimensionsException;
 import factorycards.CardsFactory;
-import factorycards.cards.Card;
 import factorycards.generalcardsfactory.GeneralCardsFactory;
 import model.Player;
+import model.card.Card;
 import util.CardUtil;
 import util.CardValidation;
 
@@ -16,7 +16,7 @@ public class Start {
 
 
 		CardUtil utilCard = new CardUtil();
-		CardValidation validationOfCard = new CardValidation();
+		CardValidation cardValidation = new CardValidation();
 		
 		String cardToString;
 
@@ -26,10 +26,10 @@ public class Start {
 		List<Card> player1Cards = new ArrayList<>();
 
 		Card cardClubsAce = player1CardsFactory.createCardClubsAce();
-		Card cardDiamondsKing = player1CardsFactory.createCardDiamondsKing();
+		Card cardDiamondsKing = player1CardsFactory.createCardClubsKing();
 		Card cardHeartsNine = player1CardsFactory.createCardHeartsNine();
 		Card cardSpadesSeven = player1CardsFactory.createCardSpadesSeven();
-		Card cardDiamondsAce = player1CardsFactory.createCardDiamondsAce();
+		Card cardDiamondsAce = player1CardsFactory.createCardClubsAce();
 
 		player1Cards.add(cardClubsAce);
 		player1Cards.add(cardDiamondsKing);
@@ -57,13 +57,13 @@ public class Start {
 		player2.setCards(player2Cards);
 		
 		
-		cardToString = validationOfCard.createStrigToValidate(utilCard, player1);
+		cardToString = cardValidation.createStrigToValidate(utilCard, player1);
 		
-		validationOfCard.validateCardDimensions(cardToString, player1, "player1");
+		cardValidation.validateCardDimensions(cardToString, player1, "player1");
 		
-		cardToString = validationOfCard.createStrigToValidate(utilCard, player2);
+		cardToString = cardValidation.createStrigToValidate(utilCard, player2);
 		
-		validationOfCard.validateCardDimensions(cardToString, player2, "player2");
+		cardValidation.validateCardDimensions(cardToString, player2, "player2");
 		System.out.println();
 		
 		utilCard.drawPlayer(player1, player2);
