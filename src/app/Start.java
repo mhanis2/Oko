@@ -32,8 +32,8 @@ public class Start {
 		Player player = null;
 		Player computer = null;
 
-		List<Card> player1Cards = null;
-		List<Card> player2Cards = null;
+		List<Card> playerCards = null;
+		List<Card> computerCards = null;
 		List<Card> allCardsList = null;
 
 		Card newCard = null;
@@ -47,8 +47,8 @@ public class Start {
 			computer = new Player();
 			System.out.println("Hello player :)");
 			
-			player1Cards = new ArrayList<>();
-			player2Cards = new ArrayList<>();
+			playerCards = new ArrayList<>();
+			computerCards = new ArrayList<>();
 			
 			allCardsList = generationCard.createAllCardsList(generateAllCards);
 
@@ -58,17 +58,17 @@ public class Start {
 				switch (gameAnswer) {
 				case 1:
 					newCard = gameMenu.pickCard(generationCard, allCardsList);
-					gameMenu.addPlayerCard(newCard, player, player1Cards);
+					gameMenu.addPlayerCard(newCard, player, playerCards);
 					System.out.println("You have received a card.");
 										
 					System.out.println("You have " + player.getCards().size() + " card(s).");
 					
 					newCard = gameMenu.pickCard(generationCard, allCardsList);
-					gameMenu.addPlayerCard(newCard, computer, player2Cards);
+					gameMenu.addPlayerCard(newCard, computer, computerCards);
 					break;
 				case 2:
 					try {
-						if (checkList.checkCardAppearance(player1Cards)) {
+						if (checkList.checkCardAppearance(playerCards)) {
 							System.out.println();
 							System.out.println("Your score is: " + gameMenu.showScore(player));
 							System.out.println();
@@ -81,7 +81,7 @@ public class Start {
 					break;
 				case 3:
 					try {
-						if (checkList.checkCardAppearance(player1Cards)) {
+						if (checkList.checkCardAppearance(playerCards)) {
 							cardValidationString = cardValidation.createStrigToValidate(utilCard, player);
 							cardValidation.validateCardDimensions(cardValidationString, player, "player1");
 							
@@ -95,7 +95,7 @@ public class Start {
 					break;
 				case 4:
 					try{
-						if(checkList.checkCardAppearance(player1Cards) && checkList.checkCardAppearance(player2Cards)) {
+						if(checkList.checkCardAppearance(playerCards) && checkList.checkCardAppearance(computerCards)) {
 							cardValidationString = cardValidation.createStrigToValidate(utilCard, player);
 							cardValidation.validateCardDimensions(cardValidationString, player, "player1");
 								
