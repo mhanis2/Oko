@@ -1,9 +1,12 @@
 package factorycards;
 
 import model.card.Card;
+import model.card.Color;
+import model.card.Value;
 
 public interface CardsFactory {
 
+	public Card createCard(Color color, Value label);
 	/**
 	 * Create card Clubs Seven.
 	 * @return card Clubs Seven

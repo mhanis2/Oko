@@ -122,11 +122,12 @@ public class CardUtil {
 			String cardLabel = player.getCards().get(i).getValue().getLabel();
 			int cardLabelLenght = cardLabel.length();
 			line.append(cardLabel);
-			for (int j = 0; j < 2 - cardLabelLenght; j++) {
-				line.append(Const.SP);
-			}
-			if (i == cardCount -1) {
-				for (int j = 0; j < Const.CARD_SIZE_X - 2 * (1 + cardLabelLenght) - 1; j++) {
+			if (i != cardCount - 1) {
+				for (int j = 0; j < 2 - cardLabelLenght; j++) {
+					line.append(Const.SP);
+				}
+			} else {
+				for (int j = 0; j < Const.CARD_SIZE_X - 2 * (cardLabelLenght) - 2; j++) {
 					line.append(Const.SP);
 				}
 				line.append(cardLabel);
@@ -142,7 +143,7 @@ public class CardUtil {
 	 * @param player
 	 * @return
 	 */
-	public String drawNumberLinceComputer(Player player) {
+	public String drawNumberLineComputer(Player player) {
 		StringBuilder line = new StringBuilder();
 		int cardCount = player.getCards().size();
 		
@@ -261,7 +262,7 @@ public class CardUtil {
 	 * @param player
 	 * @return
 	 */
-	public String drawEmpytLineComputer(Player player) {
+	public String drawEmptyLineComputer(Player player) {
 		StringBuilder line = new StringBuilder();
 		int cardCount = player.getCards().size();
 		
@@ -284,27 +285,62 @@ public class CardUtil {
 	}
 
 	/**
-	 * Draw all cards of both users.
-	 * @param player
+	 * Draw all cards of both players.
+	 * 
+	 * @param player1
 	 * @param player2
 	 */
-	public void drawPlayer(Player player, Player player2) {
-		System.out.print(drawTopLine(player));
+	public void drawAllPlayers(Player player1, Player player2) {
+		System.out.print(drawTopLine(player1));
 		System.out.printf("%30s\n", drawTopLineComputer(player2));
-		System.out.print(drawNumberLine(player));
-		System.out.printf("%30s\n", drawNumberLinceComputer(player2));
-		System.out.print(drawColorLine(player));
+		System.out.print(drawNumberLine(player1));
+		System.out.printf("%30s\n", drawNumberLineComputer(player2));
+		System.out.print(drawColorLine(player1));
 		System.out.printf("%30s\n", drawColorLineComputer(player2));
 		for (int i = 0; i < Const.CARD_SIZE_Y - 6; i++) {
-			System.out.print(drawEmptyLine(player));
-			System.out.printf("%30s\n", drawEmpytLineComputer(player2));
+			System.out.print(drawEmptyLine(player1));
+			System.out.printf("%30s\n", drawEmptyLineComputer(player2));
 		}
-		System.out.print(drawColorLine(player));
+		System.out.print(drawColorLine(player1));
 		System.out.printf("%30s\n", drawColorLineComputer(player2));
-		System.out.print(drawNumberLine(player));
-		System.out.printf("%30s\n", drawNumberLinceComputer(player2));
-		System.out.print(drawBottomLine(player));
+		System.out.print(drawNumberLine(player1));
+		System.out.printf("%30s\n", drawNumberLineComputer(player2));
+		System.out.print(drawBottomLine(player1));
 		System.out.printf("%30s\n", drawBottomLineComputer(player2));
 	}
 	
+	/**
+	 * Draw all cards of one player.
+	 * 
+	 * @param player
+	 */
+	public void drawOnePlayer(Player player, int branch) {
+
+		switch (branch) {
+		case 1:
+			System.out.println(drawTopLine(player));
+			System.out.println(drawNumberLine(player));
+			System.out.println(drawColorLine(player));
+			for (int i = 0; i < Const.CARD_SIZE_Y - 6; i++) {
+				System.out.println(drawEmptyLine(player));
+			}
+			System.out.println(drawColorLine(player));
+			System.out.println(drawNumberLine(player));
+			System.out.println(drawBottomLine(player));
+			break;
+		case 2:
+			System.out.println(drawTopLineComputer(player));
+			System.out.println(drawNumberLineComputer(player));
+			System.out.println(drawColorLineComputer(player));
+			for (int i = 0; i < Const.CARD_SIZE_Y - 6; i++) {
+				System.out.println(drawEmptyLineComputer(player));
+			}
+			System.out.println(drawColorLineComputer(player));
+			System.out.println(drawNumberLineComputer(player));
+			System.out.println(drawBottomLineComputer(player));
+			break;
+		}
+
+	}
+
 }

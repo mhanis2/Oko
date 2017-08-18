@@ -200,4 +200,10 @@ public class GeneralCardsFactory implements CardsFactory {
 		return newCard;
 	}
 
+	@Override
+	public Card createCard(Color color, Value label) {
+		Card newCard = new Card(color, label);
+		return newCard;
+	}
+
 }
