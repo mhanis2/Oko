@@ -107,15 +107,15 @@ public class Start {
 							System.out.println("Computer score is: " + gameMenu.showScore(computer));
 							
 							utilCard.drawAllPlayers(player, computer);
-							endGameAnswer = gameMenu.gameEnd(sc);
 								
 						} else {
 							throw new NoCardsException("No cards to show.");
 						}
 					} catch (NoCardsException e) {
 						e.toString();
-						endGameAnswer = false;
-					} 
+					} finally {
+						endGameAnswer = gameMenu.gameEnd(sc);
+					}
 					break;
 				
 				}
