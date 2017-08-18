@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import exceptions.DimensionsException;
+import exceptions.NoCardsException;
 import factorycards.CardsFactory;
 import factorycards.generalcardsfactory.GeneralCardsFactory;
 import model.Player;
@@ -12,18 +13,19 @@ import model.card.Card;
 import util.AllCardsGeneration;
 import util.CardUtil;
 import util.CardValidation;
+import util.CheckCardAppearance;
 import util.Menu;
 
 public class Start {
 	private static Scanner sc = new Scanner(System.in);
 	private static boolean endGameAnswer;
-	public static void main(String[] args) throws DimensionsException {
-
+	public static void main(String[] args) throws DimensionsException, NoCardsException {
 
 
 		CardUtil utilCard = new CardUtil();
 		CardValidation cardValidation = new CardValidation();
 		AllCardsGeneration generationCard = new AllCardsGeneration();
+		CheckCardAppearance checkList = new CheckCardAppearance();
 		Menu gameMenu = new Menu();
 		CardsFactory generateAllCards = new GeneralCardsFactory();
 
@@ -49,11 +51,8 @@ public class Start {
 			player2Cards = new ArrayList<>();
 			
 			allCardsList = generationCard.createAllCardsList(generateAllCards);
-			
-
 
 			do {
-				
 				gameAnswer = gameMenu.gameStart(sc);
 				
 				switch (gameAnswer) {
@@ -73,30 +72,45 @@ public class Start {
 					System.out.println();
 					break;
 				case 3:
-					cardValidationString = cardValidation.createStrigToValidate(utilCard, player);
-					cardValidation.validateCardDimensions(cardValidationString, player, "player1");
-					
-					utilCard.drawOnePlayer(player, 1);
+					try {
+						if (checkList.checkCardAppearance(player1Cards)) {
+							cardValidationString = cardValidation.createStrigToValidate(utilCard, player);
+							cardValidation.validateCardDimensions(cardValidationString, player, "player1");
+							
+							utilCard.drawOnePlayer(player, 1);
+						} else {
+							throw new NoCardsException("You have no card(s).");
+						}
+					} catch (NoCardsException e) {
+						e.toString();
+					}
 					break;
 				case 4:
-					cardValidationString = cardValidation.createStrigToValidate(utilCard, player);
-					cardValidation.validateCardDimensions(cardValidationString, player, "player1");
-					
-					cardValidationString = cardValidation.createStrigToValidate(utilCard, computer);
-					cardValidation.validateCardDimensions(cardValidationString, computer, "player2");
-					
-					System.out.println();
-					System.out.println("Your score is: " + gameMenu.showScore(player));
-					System.out.println("Computer score is: " + gameMenu.showScore(computer));
-					
-					utilCard.drawAllPlayers(player, computer);
-					endGameAnswer = gameMenu.gameEnd(sc);
+					try{
+						if(checkList.checkCardAppearance(player1Cards) && checkList.checkCardAppearance(player2Cards)) {
+							cardValidationString = cardValidation.createStrigToValidate(utilCard, player);
+							cardValidation.validateCardDimensions(cardValidationString, player, "player1");
+								
+							cardValidationString = cardValidation.createStrigToValidate(utilCard, computer);
+							cardValidation.validateCardDimensions(cardValidationString, computer, "player2");
+								
+							System.out.println();
+							System.out.println("Your score is: " + gameMenu.showScore(player));
+							System.out.println("Computer score is: " + gameMenu.showScore(computer));
+							
+							utilCard.drawAllPlayers(player, computer);
+							endGameAnswer = gameMenu.gameEnd(sc);
+								
+						} else {
+							throw new NoCardsException("You and/or computer have no cards.");
+						}
+					} catch (NoCardsException e) {
+						e.toString();
+						endGameAnswer = true;
+					} 
 					break;
-				}
-//				if (endGameAnswer) {
-//					break;
-//				}
 				
+				}
 			}while(gameAnswer > 0 && gameAnswer < 4);
 			
 			if (endGameAnswer) {
