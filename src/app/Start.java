@@ -67,9 +67,17 @@ public class Start {
 					gameMenu.addPlayerCard(newCard, computer, player2Cards);
 					break;
 				case 2:
-					System.out.println();
-					System.out.println("Your score is: " + gameMenu.showScore(player));
-					System.out.println();
+					try {
+						if (checkList.checkCardAppearance(player1Cards)) {
+							System.out.println();
+							System.out.println("Your score is: " + gameMenu.showScore(player));
+							System.out.println();
+						} else {
+							throw new NoCardsException("No score to show. You have no card(s).");
+						}
+					} catch (NoCardsException e) {
+						e.toString();
+					}
 					break;
 				case 3:
 					try {
@@ -102,7 +110,7 @@ public class Start {
 							endGameAnswer = gameMenu.gameEnd(sc);
 								
 						} else {
-							throw new NoCardsException("You and/or computer have no cards.");
+							throw new NoCardsException("No cards to show.");
 						}
 					} catch (NoCardsException e) {
 						e.toString();
