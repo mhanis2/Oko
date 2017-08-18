@@ -45,7 +45,7 @@ public class Start {
 		for (;;) {
 			player = new Player();
 			computer = new Player();
-			System.out.println("Hello.");
+			System.out.println("Hello player :)");
 			
 			player1Cards = new ArrayList<>();
 			player2Cards = new ArrayList<>();
@@ -106,7 +106,7 @@ public class Start {
 						}
 					} catch (NoCardsException e) {
 						e.toString();
-						endGameAnswer = true;
+						endGameAnswer = false;
 					} 
 					break;
 				
