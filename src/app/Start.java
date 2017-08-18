@@ -19,7 +19,8 @@ import util.Menu;
 public class Start {
 	private static Scanner sc = new Scanner(System.in);
 	private static boolean endGameAnswer;
-	public static void main(String[] args) throws DimensionsException, NoCardsException {
+
+	public static void main(String[] args) throws DimensionsException {
 
 
 		CardUtil utilCard = new CardUtil();
