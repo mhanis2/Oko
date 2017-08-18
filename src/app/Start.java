@@ -40,7 +40,7 @@ public class Start {
 
 		String cardValidationString;
 
-		int gameAnswer;
+		int menuAnswer;
 		
 		for (;;) {
 			player = new Player();
@@ -53,9 +53,9 @@ public class Start {
 			allCardsList = generationCard.createAllCardsList(generateAllCards);
 
 			do {
-				gameAnswer = gameMenu.gameStart(sc);
+				menuAnswer = gameMenu.gameStart(sc);
 				
-				switch (gameAnswer) {
+				switch (menuAnswer) {
 				case 1:
 					newCard = gameMenu.pickCard(generationCard, allCardsList);
 					gameMenu.addPlayerCard(newCard, player, playerCards);
@@ -119,7 +119,7 @@ public class Start {
 					break;
 				
 				}
-			}while(gameAnswer > 0 && gameAnswer < 4);
+			}while(menuAnswer > 0 && menuAnswer < 4);
 			
 			if (endGameAnswer) {
 				System.out.println();
