@@ -6,29 +6,31 @@ import java.util.Scanner;
 
 import exceptions.DimensionsException;
 import exceptions.NoCardsException;
-import factorycards.CardsFactory;
 import factorycards.generalcardsfactory.GeneralCardsFactory;
 import model.Player;
+import model.Screen;
 import model.card.Card;
-import util.AllCardsGeneration;
+import util.AllCardsUtil;
 import util.CardUtil;
 import util.CardValidation;
 import util.CheckCardAppearance;
-import util.Menu;
+import util.PlayerUtil;
+import util.ScoreEvaluation;
 
 public class Start {
 	private static Scanner sc = new Scanner(System.in);
-	private static boolean endGameAnswer;
 
 	public static void main(String[] args) throws DimensionsException {
 
 
 		CardUtil utilCard = new CardUtil();
 		CardValidation cardValidation = new CardValidation();
-		AllCardsGeneration generationCard = new AllCardsGeneration();
+		AllCardsUtil generationCard = new AllCardsUtil();
+		GeneralCardsFactory allCardCreation = new GeneralCardsFactory();
 		CheckCardAppearance checkList = new CheckCardAppearance();
-		Menu gameMenu = new Menu();
-		CardsFactory generateAllCards = new GeneralCardsFactory();
+		PlayerUtil playerUtil = new PlayerUtil();
+		ScoreEvaluation scoreEvaluation = new ScoreEvaluation();
+		Screen screen = Screen.getInstance();
 
 		Player player = null;
 		Player computer = null;
@@ -38,41 +40,52 @@ public class Start {
 		List<Card> allCardsList = null;
 
 		Card newCard = null;
-
 		String cardValidationString;
-
+		int playerScore;
+		int computerScore;
 		int menuAnswer;
+		boolean endGameAnswer;
 		
 		for (;;) {
+
 			player = new Player();
 			computer = new Player();
-			System.out.println("Hello player :)");
-			
+
 			playerCards = new ArrayList<>();
 			computerCards = new ArrayList<>();
 			
-			allCardsList = generationCard.createAllCardsList(generateAllCards);
+			int continualEvaluationValue = 0;
+			boolean finalGameStep = false;
+
+			allCardsList = generationCard.createAllCardsList(allCardCreation);
 
 			do {
-				menuAnswer = gameMenu.gameStart(sc);
+				menuAnswer = screen.gameStart(sc);
 				
 				switch (menuAnswer) {
 				case 1:
-					newCard = gameMenu.pickCard(generationCard, allCardsList);
-					gameMenu.addPlayerCard(newCard, player, playerCards);
+					newCard = playerUtil.pickUpCard(generationCard, allCardsList);
+					playerUtil.addPlayerCard(newCard, player, playerCards);
 					System.out.println("You have received a card.");
-										
-					System.out.println("You have " + player.getCards().size() + " card(s).");
-					
-					newCard = gameMenu.pickCard(generationCard, allCardsList);
-					gameMenu.addPlayerCard(newCard, computer, computerCards);
+
+					System.out.println("You have " + playerUtil.showCardAmount(player) + " card(s).");
+					System.out.println();
+
+					newCard = playerUtil.pickUpCard(generationCard, allCardsList);
+					playerUtil.addPlayerCard(newCard, computer, computerCards);
+
+					computerScore = playerUtil.getPlayerScore(computer);
+					continualEvaluationValue = scoreEvaluation.computerEvaluation(computerScore);
 					break;
 				case 2:
 					try {
 						if (checkList.checkCardAppearance(playerCards)) {
+							playerScore = playerUtil.getPlayerScore(player);
 							System.out.println();
-							System.out.println("Your score is: " + gameMenu.showScore(player));
+							System.out.println("Your score is: " + playerScore);
 							System.out.println();
+
+							continualEvaluationValue = scoreEvaluation.playerEvaluation(playerScore);
 						} else {
 							throw new NoCardsException("No score to show. You have no card(s).");
 						}
@@ -102,26 +115,36 @@ public class Start {
 								
 							cardValidationString = cardValidation.createStrigToValidate(utilCard, computer);
 							cardValidation.validateCardDimensions(cardValidationString, computer, "player2");
-								
+
+							playerScore = playerUtil.getPlayerScore(player);
+							computerScore = playerUtil.getPlayerScore(computer);
 							System.out.println();
-							System.out.println("Your score is: " + gameMenu.showScore(player));
-							System.out.println("Computer score is: " + gameMenu.showScore(computer));
+							System.out.println("Your score is: " + playerScore);
+							System.out.println("Computer score is: " + computerScore);
 							
 							utilCard.drawAllPlayers(player, computer);
+
+							System.out.println();
+							scoreEvaluation.finalScoreEvaluation(playerScore, computerScore);
+							System.out.println();
+							finalGameStep = true;
 								
 						} else {
 							throw new NoCardsException("No cards to show.");
 						}
 					} catch (NoCardsException e) {
 						e.toString();
-					} finally {
-						endGameAnswer = gameMenu.gameEnd(sc);
 					}
 					break;
-				
 				}
-			}while(menuAnswer > 0 && menuAnswer < 4);
+				
+				finalGameStep = screen.continualEvaluation(continualEvaluationValue);
+
+
+			} while (!finalGameStep);
 			
+			endGameAnswer = screen.gameEnd(sc);
+
 			if (endGameAnswer) {
 				System.out.println();
 				System.out.println("End of Game !!!");

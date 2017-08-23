@@ -31,10 +31,7 @@ public class CardValidation {
 
 		Matcher matcher = pattern.matcher(stringCard);
 
-		if (matcher.matches()) {
-			System.out.println("Dimensions of card(s) of " + userName + " are ok.");
-			;
-		} else {
+		if (!matcher.matches()) {
 			throw new DimensionsException("Dimensions of card(s) " + userName + " are invalid.");
 		}
 	}

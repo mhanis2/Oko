@@ -12,6 +12,11 @@ public class Player {
 		return cards;
 	}
 
+	/**
+	 * Set players card in List<Card>.
+	 * 
+	 * @param cards
+	 */
 	public void setCards(List<Card> cards) {
 		this.cards = cards;
 	}
