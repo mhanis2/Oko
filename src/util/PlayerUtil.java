@@ -49,7 +49,7 @@ public class PlayerUtil {
 	 * Show player`s score.
 	 * 
 	 * @param player
-	 * @return score
+	 * @return player`s score
 	 */
 	public int getPlayerScore(Player player) {
 		int cardCount = player.getCards().size();

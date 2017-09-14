@@ -24,7 +24,7 @@ public class Screen {
 	 * @param s
 	 * @return user`s choice
 	 */
-	public int gameStart(Scanner s) {
+	public int startGame(Scanner s) {
 
 		int startGameAnswer;
 
@@ -66,30 +66,30 @@ public class Screen {
 	}
 
 
-	/**
-	 * Evaluate score during the game.
-	 * 
-	 * @param value
-	 * @return message for user and value for ending or continuation of game.
-	 */
-	public boolean continualEvaluation(int value) {
-		boolean finalStep = false;
-		switch (value) {
-		case 1:
-			System.out.println("Computer get 'oko', so you have lose !!!");
-			finalStep = true;
-			break;
-		case 2:
-			System.out.println("Compter has more then 21, so you have won !!!");
-			System.out.println("Congratulations !!!");
-			finalStep = true;
-			break;
-		case 3:
-			System.out.println("You get 'oko' !!!");
-			System.out.println("Congratulations !!!");
-			finalStep = true;
-			break;
-		}
-		return finalStep;
-	}
+	// /**
+	// * Evaluate score during the game.
+	// *
+	// * @param value
+	// * @return message for user and value for ending or continuation of game
+	// */
+	// public boolean continualEvaluation(int value) {
+	// boolean finalStep = false;
+	// switch (value) {
+	// case 1:
+	// System.out.println("Computer get 'oko', so you have lose !!!");
+	// finalStep = true;
+	// break;
+	// case 2:
+	// System.out.println("Compter has more then 21, so you have won !!!");
+	// System.out.println("Congratulations !!!");
+	// finalStep = true;
+	// break;
+	// case 3:
+	// System.out.println("You get 'oko' !!!");
+	// System.out.println("Congratulations !!!");
+	// finalStep = true;
+	// break;
+	// }
+	// return finalStep;
+	// }
 }

@@ -28,15 +28,24 @@ public class ScoreEvaluation {
 	}
 
 	/**
-	 * Evaluate player`s score.
+	 * Evaluation score of both players.
 	 * 
 	 * @param playerScore
-	 * @return value for Screen method to evaluate score
+	 * @param computerScore
+	 * @return value for method continualEvaluation(value) in Screen class to
+	 *         evaluate score
 	 */
-	public int playerEvaluation(int playerScore) {
+	public int scoreEvaluation(int playerScore, int computerScore) {
 		int x;
-		if (playerScore == 21) {
+
+		if (computerScore == 21) {
+			x = 1;
+		} else if (computerScore > 21) {
+			x = 2;
+		} else if (playerScore == 21) {
 			x = 3;
+		} else if (playerScore > 21) {
+			x = 4;
 		} else {
 			x = 0;
 		}
@@ -45,21 +54,35 @@ public class ScoreEvaluation {
 	}
 
 	/**
-	 * Evaluate score of computer.
+	 * Evaluate score during the game.
 	 * 
-	 * @param computerScore
-	 * @return value for Screen method to evaluate score
+	 * @param value
+	 * @return message for user and value for ending or continuation of game
 	 */
-	public int computerEvaluation(int computerScore) {
-		int y;
-		if (computerScore == 21) {
-			y = 1;
-		} else if (computerScore > 21) {
-			y = 2;
-		} else {
-			y = 0;
+	public boolean continualEvaluation(int value) {
+		boolean finalStep = false;
+		switch (value) {
+		case 1:
+			System.out.println("Computer get 'oko', so you have lose !!!");
+			finalStep = true;
+			break;
+		case 2:
+			System.out.println("Compter has more then 21, so you have won !!!");
+			System.out.println("Congratulations !!!");
+			finalStep = true;
+			break;
+		case 3:
+			System.out.println("You get 'oko' !!!");
+			System.out.println("Congratulations !!!");
+			finalStep = true;
+			break;
+		case 4:
+			System.out.println("You have more then 21 points.");
+			System.out.println("You have lost.");
+			finalStep = true;
+			break;
 		}
 
-		return y;
+		return finalStep;
 	}
 }

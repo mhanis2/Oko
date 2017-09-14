@@ -11,6 +11,11 @@ public enum Color {
 		this.color = color;
 	}
 
+	/**
+	 * Get color of card.
+	 * 
+	 * @return color of card
+	 */
 	public char getColor() {
 		return this.color;
 	}
